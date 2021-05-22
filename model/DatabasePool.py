@@ -1,16 +1,17 @@
+from mysql.connector import Error
 from mysql.connector import pooling
+from config.Settings import Settings
 
-import os
 
 class DatabasePool:
     #class variable
     connection_pool = pooling.MySQLConnectionPool(
                                pool_name="ws_pool",
                                pool_size=5,
-                               host=os.environ['HOST'],
-                               database=os.environ['DATABASE'],
-                               user=os.environ['USERNAME'],
-                               password=['PASSWORD'])
+                               host=Settings.host,
+                               database=Settings.database,
+                               user=Settings.user,
+                               password=Settings.password)
 
     @classmethod
     def getConnection(cls): 

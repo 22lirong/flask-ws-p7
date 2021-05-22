@@ -15,6 +15,7 @@ def getUser(userid):
         message={"message":"Error!!"}
         return jsonify(message),500
 
+
 @app.route('/users') #define the api route
 def getAllUsers():
     try:
@@ -25,6 +26,7 @@ def getAllUsers():
     except Exception as err:
         message={"message":"Error!!"}
         return jsonify(message),500
+
 
 @app.route('/users', methods=['POST'])
 def insertUsers():
@@ -51,7 +53,6 @@ def updateUser(userid):
         return '{"message": "User with '+str(userid)+ ' does not exist!"}',404
     
 
-
 @app.route('/users/<int:userid>', methods=['DELETE'])
 def deleteUser(userid):
  
@@ -62,7 +63,6 @@ def deleteUser(userid):
     else:
         return '{"message": "User with '+str(userid)+ ' does not exist!"}',404
     
-
 
 if __name__ == '__main__':
     app.run(debug=True)
